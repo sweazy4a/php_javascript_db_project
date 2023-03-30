@@ -1,0 +1,15 @@
+{
+    "dependencies": {
+        "awesome-notifications": "^3.1.3",
+        "bootstrap": "^5.2.3",
+        "laravel-mix": "^6.0.49",
+        "sass": "^1.60.0",
+        "sass-loader": "^13.2.2"
+    },
+    "scripts": {
+        "dev": "mix"
+    },
+    "devDependencies": {
+        "resolve-url-loader": "^5.0.0"
+    }
+}
