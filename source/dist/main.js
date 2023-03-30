@@ -20,6 +20,9 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_GeoAjaxRender__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partials/GeoAjaxRender */ "./assets/js/partials/GeoAjaxRender.js");
+/* harmony import */ var _partials_GeoCheckState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partials/GeoCheckState */ "./assets/js/partials/GeoCheckState.js");
+/* harmony import */ var _partials_GeoCheckState__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_partials_GeoCheckState__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 /***/ }),
@@ -132,6 +135,37 @@ document.addEventListener('DOMContentLoaded', function () {
       xhr.send("ips=".concat(encodeURIComponent(ips)));
     }
   });
+});
+
+/***/ }),
+
+/***/ "./assets/js/partials/GeoCheckState.js":
+/*!*********************************************!*\
+  !*** ./assets/js/partials/GeoCheckState.js ***!
+  \*********************************************/
+/***/ (() => {
+
+document.addEventListener('DOMContentLoaded', function () {
+  // check if the button should still be disabled based on stored timestamp
+  var submitButton = document.querySelector('.ipSubmitBtn');
+  var disabledUntil = localStorage.getItem('submitBtnDisabledUntil');
+  if (disabledUntil && new Date().getTime() < disabledUntil) {
+    var timeLeft = Math.round((disabledUntil - new Date().getTime()) / 1000);
+    submitButton.disabled = true;
+    submitButton.innerText = "Submit (".concat(timeLeft, "s left)");
+    var intervalId = setInterval(function () {
+      var currentTime = new Date().getTime();
+      var timeLeft = Math.round((disabledUntil - currentTime) / 1000);
+      if (timeLeft <= 0) {
+        clearInterval(intervalId);
+        submitButton.disabled = false;
+        submitButton.innerText = 'Submit';
+      } else {
+        submitButton.innerText = "Submit (".concat(timeLeft, "s left)");
+      }
+    }, 1000);
+    return;
+  }
 });
 
 /***/ }),
