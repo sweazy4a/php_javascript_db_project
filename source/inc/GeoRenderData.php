@@ -23,7 +23,7 @@ class IPInfo {
     }
     
     private function timezoneDbConverter($lat, $long, $countryCode) {
-        $api_key = 'AIzaSyD8EOfzCZ12eOXAsKShGXi0B9QYkHyVn1A';
+        $api_key = 'AIzy3aSyD8EOfzCZ12eOXAsKShGXi0B9QYkHyVn1A';
         $url = "https://maps.googleapis.com/maps/api/timezone/json?location={$lat},{$long}&timestamp=" . time() . "&key={$api_key}&sensor=false&language=en&region={$countryCode}";
         $response = file_get_contents($url);
         $data = json_decode($response, true);
